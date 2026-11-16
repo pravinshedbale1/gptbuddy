@@ -22,6 +22,13 @@ To use a second device, deploy (below) so you get an HTTPS URL.
 
 ## Deploy
 
+**GitHub Pages (main):** every push to `main` builds and deploys automatically via
+[.github/workflows/deploy.yml](.github/workflows/deploy.yml), to
+`https://pravinshedbale1.github.io/gptbuddy/`. The Firebase web settings come from the repo's
+Actions **variables** (`VITE_FIREBASE_*`).
+
+**Firebase Hosting (alternative):**
+
 ```bash
 npm run deploy       # builds, then deploys hosting + database rules
 ```

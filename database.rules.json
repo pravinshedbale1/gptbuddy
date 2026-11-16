@@ -1,0 +1,32 @@
+{
+  "rules": {
+    "rooms": {
+      "$room": {
+        ".read": "$room.length >= 8 && $room.length <= 32",
+        ".write": "$room.length >= 8 && $room.length <= 32",
+        "live": {
+          ".validate": "newData.hasChildren(['text', 'ts'])",
+          "text": { ".validate": "newData.isString() && newData.val().length <= 2000" },
+          "ts": { ".validate": "newData.isNumber()" },
+          "$other": { ".validate": false }
+        },
+        "lines": {
+          "$id": {
+            ".validate": "newData.hasChildren(['text', 'ts'])",
+            "text": { ".validate": "newData.isString() && newData.val().length <= 4000" },
+            "ts": { ".validate": "newData.isNumber()" },
+            "manual": { ".validate": "newData.isBoolean()" },
+            "$other": { ".validate": false }
+          }
+        },
+        "presence": {
+          "$role": {
+            ".validate": "$role === 'transmitter' || $role === 'receiver'",
+            "$id": { ".validate": "newData.isBoolean()" }
+          }
+        },
+        "$other": { ".validate": false }
+      }
+    }
+  }
+}
